@@ -63,6 +63,14 @@ void DeleteList(DLinkedList L, int i);
 DataType GetNode(DLinkedList L, int i);
 
 /**
+ * 获取指定位置元素指针
+ * @param L
+ * @param i
+ * @return
+ */
+DlNode* GetNodeP(DLinkedList L, int i);
+
+/**
  * 打印链表
  * @param L
  */
@@ -163,6 +171,21 @@ DataType GetNode(DLinkedList L, int i) {
     return p->data;
 }
 
+DlNode* GetNodeP(DLinkedList L, int i) {
+    if (i <= 0 || i > ListLength(L)) {
+        printf("position error: %d \n", i);
+        return NULL;
+    }
+
+    int j = 0;
+    DlNode *p = L;
+    while (j++ < i) {
+        p = p->next;
+    }
+
+    return p;
+}
+
 void PrintList(DLinkedList L) {
     DlNode *p = L;
     while ((p = p->next) != L) {
@@ -191,8 +214,14 @@ int main() {
     // 5. 查找
     printf("position %d is %d \n", 4, GetNode(L, 4)); // 4
 
+    DlNode *p = GetNodeP(L, 4); // 打印第四个元素的前驱
+    printf("position 3 : %d \n", ((DlNode*)p->prior)->data);
+
     // 6. 删除
     DeleteList(L, 4); //
+
+    DlNode *s = GetNodeP(L, 4); // 打印第四个元素的前驱
+    printf("position 4 : %d, position 3 : %d \n", s->data, ((DlNode*)s->prior)->data);
 
     // 7. 打印链表
     PrintList(L); // 1, 2, 3, 5, 6
