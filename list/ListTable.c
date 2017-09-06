@@ -17,23 +17,49 @@ typedef struct {
     int length;        // 线性表当前表长（已存储数据个数）
 }SeqList;
 
-// 构造一个空栈
-SeqList * InitList();
+/**
+ * 构造一个空栈
+ * @return
+ */
+SeqList* InitList();
 
-// 获取表长
-int ListLength(SeqList * l);
+/**
+ * 获取表长
+ * @param l
+ * @return
+ */
+int ListLength(SeqList *l);
 
-// 获取i位置的元素 1 <= i <= ListLength(l)
-DataType GetNode(SeqList * l, int i);
+/**
+ * 获取i位置的元素 1 <= i <= ListLength(l)
+ * @param l
+ * @param i
+ * @return
+ */
+DataType GetNode(SeqList *l, int i);
 
-// 获取元素x的位置
+/**
+ * 获取元素x的位置
+ * @param l
+ * @param x
+ * @return
+ */
 int LocateNode(SeqList * l, DataType x);
 
-// 在表l的第i位置前插入x
-void InsertList(SeqList * l, int i, DataType x);
+/**
+ * 在表l的第i位置前插入x
+ * @param l
+ * @param i
+ * @param x
+ */
+void InsertList(SeqList *l, int i, DataType x);
 
-// 删除位置i处的元素
-void DeleteList(SeqList * l, int i);
+/**
+ * 删除位置i处的元素
+ * @param l
+ * @param i
+ */
+void DeleteList(SeqList *l, int i);
 
 SeqList * InitList() {
     SeqList * temp = (SeqList *)malloc(sizeof(SeqList)); // init memory space
@@ -47,15 +73,15 @@ SeqList * InitList() {
     return temp;
 }
 
-int ListLength(SeqList * l) {
+int ListLength(SeqList *l) {
     return l->length;
 }
 
-DataType GetNode(SeqList * l, int i) {
+DataType GetNode(SeqList *l, int i) {
     return l->data[i-1];
 }
 
-int LocateNode(SeqList * l, DataType x) {
+int LocateNode(SeqList *l, DataType x) {
     if (l->length == 0) { // the data is empty
         return 0;
     }

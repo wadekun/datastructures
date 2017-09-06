@@ -15,39 +15,65 @@ typedef char DataType;
 /****** 节点类型 ********/
 typedef struct node {
     DataType data; // 存储的数据
-    struct node * next; // 指向后继的指针
-}ListNode, * LinkedList;
+    struct node *next; // 指向后继的指针
+}ListNode, *LinkedList;
 
-// 初始化链表（只有头节点）
-LinkedList initLinkedList();
+/**
+ * 初始化链表（只有头节点）
+ * @return
+ */
+LinkedList InitList();
 
-// 头插法
+/**
+ * 头插法
+ * @return
+ */
 LinkedList createLinkedListH();
 
-// 尾插法
+/**
+ * 尾插法
+ * @return
+ */
 LinkedList createLinkedListT();
 
-// 查找元素
-ListNode * GetNode(LinkedList L, DataType i);
+/**
+ * 查找元素
+ * @param L
+ * @param i
+ * @return
+ */
+ListNode* GetNode(LinkedList L, DataType i);
 
-// 查询位置
+/**
+ * 查询位置
+ * @param L
+ * @param data
+ * @return
+ */
 int LocateNode(LinkedList L, DataType data);
 
-// 插入元素
+/**
+ * 插入元素
+ * @param L
+ * @param i
+ * @param data
+ */
 void InsertList(LinkedList L, int i, DataType data);
 
-// 删除元素
+/**
+ * 删除元素
+ * @param L
+ * @param i
+ */
 void DeleteList(LinkedList L, int i);
 
-// init an empty linkedList
-LinkedList initLinkedList() {
+LinkedList InitList() {
     LinkedList head = (LinkedList) malloc(sizeof(LinkedList));
     head->next=NULL;
 
     return head;
 }
 
-// 头插法 创建单向链表
 LinkedList createLinkedListH() {
     LinkedList head = (LinkedList) malloc(sizeof(LinkedList)); // 头结点
     head->next = NULL;
@@ -66,7 +92,6 @@ LinkedList createLinkedListH() {
     return head;
 }
 
-// 尾插法 创建单向链表
 LinkedList createLinkedListT() {
     LinkedList head = (LinkedList) malloc(sizeof(LinkedList)); // 头结点
     head->next = NULL;
@@ -86,7 +111,6 @@ LinkedList createLinkedListT() {
     return head;
 }
 
-// 打印链表
 void printLinkedList(LinkedList L) {
 //    if (L->next == NULL)
 //        printf("the LinkedList is Empty! \n");
@@ -97,7 +121,7 @@ void printLinkedList(LinkedList L) {
     }
 }
 
-ListNode * GetNode(LinkedList L, DataType i) {
+ListNode* GetNode(LinkedList L, DataType i) {
     if (i <= 0) {
         printf("position error");
         return NULL;
@@ -157,7 +181,7 @@ void InsertList(LinkedList L, int i, DataType data) {
         }
     }
 
-    ListNode * temp = (ListNode *) malloc(sizeof(ListNode));
+    ListNode * temp = (ListNode*) malloc(sizeof(ListNode));
     temp->data = data;
 
     temp->next = node->next; // 将该节点链入链表中
