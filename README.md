@@ -8,4 +8,4 @@
 [栈](stack/README.md)
 
 ## 队列
-[队列](stack/README.md)
+[队列](queue/README.md)
